@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Lingshu-Cell: A generative cellular world model for transcriptome modeling toward virtual cells.">
+  <meta name="keywords" content="Lingshu-Cell, single-cell, masked discrete diffusion, generative model, perturbation prediction, virtual cell">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lingshu-Cell</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<!-- ==================== Hero ==================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-2 publication-title">
+            Lingshu-Cell: A Generative Cellular World Model for Transcriptome Modeling Toward Virtual Cells
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Han Zhang</a><sup>&clubs;</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Guo-Hua Yuan</a><sup>&clubs;</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Chaohao Yuan</a><sup>&clubs;</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Tingyang Xu</a>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="#">Tian Bian</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Hong Cheng</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Wenbing Huang</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Deli Zhao</a><sup>&spades;</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Yu Rong</a><sup>&spades;</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <br>
+            <span class="author-block">DAMO Academy, Alibaba Group</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>&clubs;</sup>Equal Contribution, <sup>&spades;</sup>Project Leader</span>
+          </div>
+
+          <!-- Links -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2603.25240" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>Report</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Overview Figure ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content" style="margin-top: 1.5rem;">
+          <p>
+            We’re excited to share <strong>Lingshu-Cell</strong>, a cellular world model released by Alibaba DAMO Academy. This work moves beyond static representation learning toward generative modeling of cellular state distributions and perturbation responses, taking a step toward virtual cells.
+          </p>
+          <div class="notification is-light" style="text-align: left;">
+            <p style="margin-bottom: 0.75rem;"><strong>Highlights of Lingshu-Cell</strong></p>
+            <ul>
+              <li>Lingshu-Cell introduces a generative cellular world model for single-cell transcriptomics based on a masked discrete diffusion framework.</li>
+              <li>Lingshu-Cell performs transcriptome-wide modeling over approximately 18,000 genes directly in a discrete token space compatible with the sparse, non-sequential nature of scRNA-seq data, without prior gene selection.</li>
+              <li>Across diverse tissues and species, Lingshu-Cell faithfully captures cellular state distributions, marker-gene expression patterns, and cell-subtype proportions.</li>
+              <li>Lingshu-Cell also delivers leading performance in predicting cellular responses under both genetic and cytokine perturbations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="figure-container">
+          <img src="./static/images/figure_1.png" alt="Figure 1: Overview of Lingshu-Cell">
+          <p class="figure-caption">
+            <span class="fig-label">Figure 1 | Overview of the Lingshu-Cell framework.</span>
+            <strong>a</strong>, Lingshu-Cell employs a masked discrete diffusion model to learn and generate single-cell transcriptomic data. In the forward process, gene expression values are progressively masked; in the reverse process, the model iteratively predicts masked values to generate realistic scRNA-seq expression profiles.
+            <strong>b</strong>, Comparison of generative paradigms. Unlike autoregressive (AR) models that rely on a fixed sequential order and denoising diffusion probabilistic models (DDPMs) that corrupt all positions with continuous noise, Lingshu-Cell randomly masks and predicts gene expression values in an order-independent manner, inherently compatible with the orderless structure of gene expression data.
+            <strong>c</strong>, Application scenarios, including unconditional generation across diverse human tissues and species, and conditional generation for genetic perturbation and cytokine perturbation response prediction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Abstract ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content abstract-content">
+          <p>
+            Modeling cellular states and predicting their responses to perturbations are central challenges in computational biology and the development of virtual cells.
+            Existing foundation models for single-cell transcriptomics provide powerful static representations, but they do not explicitly model the distribution of cellular states for generative simulation.
+            Here, we introduce <strong>Lingshu-Cell</strong>, a masked discrete diffusion model that learns transcriptomic state distributions and supports conditional simulation under perturbation.
+            By operating directly in a discrete token space that is compatible with the sparse, non-sequential nature of single-cell transcriptomic data, Lingshu-Cell captures complex transcriptome-wide expression dependencies across approximately 18,000 genes without relying on prior gene selection, such as filtering by high variability or ranking by expression level.
+            Across diverse tissues and species, Lingshu-Cell accurately reproduces transcriptomic distributions, marker-gene expression patterns and cell-subtype proportions, demonstrating its ability to capture complex cellular heterogeneity.
+            Moreover, by jointly embedding cell type or donor identity with perturbation, Lingshu-Cell can predict whole-transcriptome expression changes for novel combinations of identity and perturbation.
+            It achieves leading performance on the Virtual Cell Challenge H1 genetic perturbation benchmark and in predicting cytokine-induced responses in human PBMCs.
+            Together, these results establish Lingshu-Cell as a flexible cellular world model for <em>in silico</em> simulation of cell states and perturbation responses, laying the foundation for a new paradigm in biological discovery and perturbation screening.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Results ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Results</h2>
+
+    <!-- ===== Figure 2: Unconditional Generation ===== -->
+    <div class="results-section">
+      <h3 class="title is-4">Cellular State Modeling</h3>
+      <div class="figure-container">
+        <img src="./static/images/figure_2.png" alt="Figure 2: Unconditional generation results">
+        <p class="figure-caption">
+          <span class="fig-label">Figure 2 | Unconditional generation of cell states across diverse species and tissues by Lingshu-Cell.</span>
+          <strong>a</strong>, UMAP visualization of real and generated cells (10,000 each, randomly sampled) from the PARSE-PBMC dataset, colored by cell type annotation and normalized expression (log1p) of canonical marker genes for each cell type.
+          <strong>b</strong>, Comparison of cell type proportions between real and generated data.
+          <strong>c</strong>, Quantitative benchmark comparing Lingshu-Cell, scDiffusion and scVI across five metrics (Pearson correlation, Spearman correlation, MMD, 1-WD and iLISI) on the PARSE-PBMC dataset.
+          <strong>d</strong>, Unconditional generation results across human tissues, including neocortex, heart, lung and colon, with UMAP plots showing real (top) and generated (bottom) cells colored by cell type.
+          <strong>e</strong>, Unconditional generation results across multiple species, including mouse, rhesus macaque, zebrafish and fly.
+        </p>
+      </div>
+
+      <!-- Extended Data Figure 1: Scaling to 200,000 cells -->
+      <div class="figure-container">
+        <img src="./static/images/extended_data_figure_1.png" alt="Extended Data Figure 1: Scaling to 200,000 cells">
+        <p class="figure-caption">
+          <span class="fig-label">Extended Data Figure 1 | Scaling unconditional generation to larger cell populations.</span>
+          <strong>a</strong>, UMAP visualization of real and generated cells (200,000 each) from the PARSE 10M PBMC dataset, colored by cell type annotation (left) and normalized expression (log1p) of canonical marker genes.
+          <strong>b</strong>, Comparison of major cell type proportions between real and generated data.
+          <strong>c</strong>, UMAP visualization at higher resolution, showing that generated cells accurately recapitulate cell subtype structure of real data.
+          <strong>d</strong>, Comparison of cell subtype proportions between real and generated data, demonstrating robust consistency at higher resolution.
+        </p>
+      </div>
+    </div>
+
+    <!-- ===== Figure 3: Genetic Perturbation ===== -->
+    <div class="results-section">
+      <h3 class="title is-4">Genetic Perturbation Prediction</h3>
+      <div class="figure-container">
+        <img src="./static/images/figure_3.png" alt="Figure 3: Genetic perturbation prediction">
+        <p class="figure-caption">
+          <span class="fig-label">Figure 3 | Accurate prediction of single-cell transcriptomic responses to genetic perturbations in cell lines by Lingshu-Cell.</span>
+          <strong>a</strong>, Schematic of CRISPR-based genetic perturbation and the resulting transcriptomic changes.
+          <strong>b</strong>, Conditional generation framework for perturbation prediction. Cell type and perturbation target are provided as conditioning inputs, and a masked diffusion model iteratively predicts gene expression values to generate perturbation-specific expression profiles.
+          <strong>c</strong>, Three design components of Lingshu-Cell: classifier-free guidance (CFG), sequence compression, and biological prior injection (see Methods).
+          <strong>d</strong>, Ablation study of CFG guidance weight. Bar plots show prediction performance across eight metrics (DES, PDS, MAE, Spearman #DEG, Spearman LFC, AUPRC, Pearson-Δ, and average score) on the H1 test set (n = 100 perturbation targets).
+          <strong>e</strong>, Ablation study of sequence compression, comparing uncompressed input with patch sizes of 8 and 32.
+          <strong>f</strong>, Ablation study of biological prior injection, comparing prediction performance with and without prior injection.
+          In <strong>d–f</strong>, metrics highlighted in red denote improved performance relative to the corresponding baseline in each ablation setting.
+        </p>
+      </div>
+
+      <!-- Table 2: VCC Leaderboard -->
+      <div class="figure-container">
+        <p class="table-caption">
+          <span class="tab-label">Table 2 | Genetic perturbation prediction on the VCC benchmark.</span>
+          Teams are ordered by final ranking. Avg Rank: average rank across the top 25 teams. Best per column in bold. See the arXiv submission for the full top-25 ranking.
+        </p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Team</th>
+                <th>Avg Rank ↓</th>
+                <th>DES ↑</th>
+                <th>PDS ↑</th>
+                <th>MAE ↓</th>
+                <th>Sp. #DEG ↑</th>
+                <th>Sp. LFC ↑</th>
+                <th>AUPRC ↑</th>
+                <th>Pearson-Δ ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ours">
+                <td>Lingshu-Cell</td>
+                <td class="best">8.7</td>
+                <td>0.216</td>
+                <td>0.748</td>
+                <td class="best">0.052</td>
+                <td>0.394</td>
+                <td>0.331</td>
+                <td>0.272</td>
+                <td class="best">0.306</td>
+              </tr>
+              <tr>
+                <td>cleopatra</td>
+                <td>9.1</td>
+                <td>0.228</td>
+                <td>0.747</td>
+                <td>0.086</td>
+                <td>0.473</td>
+                <td class="best">0.396</td>
+                <td>0.266</td>
+                <td>0.203</td>
+              </tr>
+              <tr>
+                <td>xBio</td>
+                <td>10.7</td>
+                <td>0.305</td>
+                <td class="best">0.811</td>
+                <td>0.770</td>
+                <td class="best">0.564</td>
+                <td>0.087</td>
+                <td>0.252</td>
+                <td>0.217</td>
+              </tr>
+              <tr>
+                <td>Cellock Holmes</td>
+                <td>10.9</td>
+                <td class="best">0.356</td>
+                <td>0.679</td>
+                <td>0.239</td>
+                <td>0</td>
+                <td>0.238</td>
+                <td>0.576</td>
+                <td>0.125</td>
+              </tr>
+              <tr>
+                <td>Shippers</td>
+                <td>11.0</td>
+                <td>0.354</td>
+                <td>0.699</td>
+                <td>0.231</td>
+                <td>0</td>
+                <td>0.227</td>
+                <td>0.576</td>
+                <td>0.123</td>
+              </tr>
+              <tr>
+                <td>Mean Predictors</td>
+                <td>11.4</td>
+                <td>0.305</td>
+                <td>0.741</td>
+                <td>6.723</td>
+                <td>0.294</td>
+                <td>0.213</td>
+                <td class="best">0.582</td>
+                <td>0.217</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ===== Figure 4: Cytokine Perturbation ===== -->
+    <div class="results-section">
+      <h3 class="title is-4">Cytokine Perturbation Prediction</h3>
+      <div class="figure-container">
+        <img src="./static/images/figure_4.png" alt="Figure 4: Cytokine perturbation prediction">
+        <p class="figure-caption">
+          <span class="fig-label">Figure 4 | Accurate prediction of single-cell transcriptomic responses to cytokine perturbations in PBMCs by Lingshu-Cell.</span>
+          <strong>a</strong>, Schematic of cytokine-induced transcriptomic perturbation.
+          <strong>b</strong>, Conditional generation framework for cytokine perturbation prediction. Donor identity and cytokine condition are provided as conditioning inputs, and a masked diffusion process iteratively predicts gene expression values to generate perturbation-specific expression profiles.
+          <strong>c</strong>, Prediction performance of Lingshu-Cell, PertMean, STATE, scGPT, and scVI on the PARSE 10M PBMC dataset, evaluated across eight metrics (as defined in Fig.&nbsp;3d). Bar plots show performance on a test set comprising 4 of 12 donors, with 70% of cytokine conditions (63 of 90) held out for each donor. Bars indicate mean performance across donors; error bars, interquartile range (Q1–Q3); points, individual donor values. Metrics for which Lingshu-Cell achieves the best performance among all methods are highlighted in red.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== BibTeX ==================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <p>If you find our work useful, please consider citing:</p>
+    <pre><code>@article{zhang2026lingshucell,
+  title={Lingshu-Cell: A Generative Cellular World Model for Transcriptome Modeling Toward Virtual Cells},
+  author={Zhang, Han and Yuan, Guo-Hua and Yuan, Chaohao and Xu, Tingyang and Bian, Tian and Cheng, Hong and Huang, Wenbing and Zhao, Deli and Rong, Yu},
+  journal={arXiv preprint arXiv:2603.25240},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ==================== Footer ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="text-align: center;">
+          <p>
+            This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+            licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

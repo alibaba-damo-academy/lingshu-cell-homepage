@@ -1,0 +1,162 @@
+/* Nerfies-style index.css */
+
+.footer .icon {
+  font-size: 18px;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%);
+  text-decoration: none;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.publication-links {
+  margin-top: 1rem;
+}
+
+.publication-links .button {
+  margin: 0.25rem;
+}
+
+.hero-body .container {
+  max-width: 960px;
+}
+
+.section {
+  padding: 2rem 1.5rem;
+}
+
+/* Abstract */
+.abstract-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Figure styling */
+.figure-container {
+  margin: 1.5rem 0;
+}
+
+.figure-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.figure-caption {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-top: 0.75rem;
+  text-align: justify;
+}
+
+.figure-caption .fig-label {
+  font-weight: 700;
+  color: #363636;
+}
+
+/* Tables */
+.result-table {
+  font-size: 0.9rem;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.result-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5em 0.6em;
+  white-space: nowrap;
+}
+
+.result-table td {
+  text-align: center;
+  padding: 0.4em 0.6em;
+  white-space: nowrap;
+}
+
+.result-table td:first-child,
+.result-table th:first-child {
+  text-align: left;
+}
+
+.result-table .best {
+  font-weight: 700;
+}
+
+.result-table .ours {
+  background-color: #f0f7ff;
+}
+
+.table-caption {
+  font-size: 0.92rem;
+  color: #4a4a4a;
+  margin-bottom: 0.75rem;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.table-caption .tab-label {
+  font-weight: 700;
+  color: #363636;
+}
+
+/* Section spacing */
+.results-section {
+  margin-top: 2rem;
+}
+
+/* Highlight box */
+.highlight-box {
+  background-color: #f9f9f9;
+  border-left: 4px solid #3273dc;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.highlight-box ul {
+  margin-top: 0.5rem;
+}
+
+/* BibTeX */
+#BibTeX pre {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .result-table {
+    font-size: 0.8rem;
+  }
+  
+  .result-table th,
+  .result-table td {
+    padding: 0.3em 0.4em;
+  }
+}
